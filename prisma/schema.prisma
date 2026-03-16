@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "file:../dev.db"
+}
+
+model SalamiPool {
+  id              String       @id @default(cuid())
+  slug            String       @unique // for the link: /get-salami/[slug]
+  adminKey        String       @unique // for the giver: /manage/[adminKey]
+  giverName       String
+  totalBudget     Float        // Total amount the giver can distribute
+  remainingBudget Float        // Amount left in the pool
+  maxPerPerson    Float        // Max any single person can get
+  questions       String       // JSON string of questions and answers
+  submissions     Submission[]
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}
+
+model Submission {
+  id          String     @id @default(cuid())
+  poolId      String
+  pool        SalamiPool @relation(fields: [poolId], references: [id])
+  getterName  String
+  amount      Float
+  answers     String     // JSON string of getter's answers
+  createdAt   DateTime   @default(now())
+}
