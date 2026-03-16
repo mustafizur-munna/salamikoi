@@ -8,8 +8,9 @@ const globalForPrisma = globalThis as unknown as {
 
 const connectionString = `${process.env.POSTGRES_URL}?sslmode=require`;
 
+// Explicitly type the pool to satisfy PrismaPg
 const pool = new Pool({ connectionString });
-const adapter = new PrismaPg(pool);
+const adapter = new PrismaPg(pool as any);
 
 export const prisma =
   globalForPrisma.prisma ??
