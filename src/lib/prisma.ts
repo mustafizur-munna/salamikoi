@@ -6,16 +6,18 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
-const connectionString = `${process.env.POSTGRES_URL}?sslmode=require`;
+const connectionString = process.env.POSTGRES_URL ? `${process.env.POSTGRES_URL}?sslmode=require` : "";
 
-// Explicitly type the pool to satisfy PrismaPg
-const pool = new Pool({ connectionString });
-const adapter = new PrismaPg(pool as any);
+let adapter: any = null;
+if (process.env.NODE_ENV === "production" && connectionString) {
+  const pool = new Pool({ connectionString });
+  adapter = new PrismaPg(pool as any);
+}
 
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
-    adapter: process.env.NODE_ENV === "production" ? adapter : undefined,
+    adapter: adapter,
   });
 
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;

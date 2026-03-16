@@ -34,7 +34,7 @@ export async function submitAnswers(poolId: string, getterName: string, getterAn
   // Check budget
   const actualAmount = Math.min(calculatedAmount, pool.remainingBudget);
 
-  const submission = await prisma.$transaction(async (tx) => {
+  const submission = await (prisma as any).$transaction(async (tx: any) => {
     // 1. Create submission
     const sub = await tx.submission.create({
       data: {
