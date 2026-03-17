@@ -6,7 +6,16 @@ import { Download, Gift, Heart, Send } from "lucide-react";
 import { toast } from "sonner";
 import Link from "next/link";
 
-export default function ResultCard({ submission }: { submission: any }) {
+interface Submission {
+  id: string;
+  getterName: string;
+  amount: number;
+  pool: {
+    giverName: string;
+  };
+}
+
+export default function ResultCard({ submission }: { submission: Submission }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const downloadScreenshot = async () => {
@@ -58,7 +67,7 @@ export default function ResultCard({ submission }: { submission: any }) {
 
         <div className="p-4 bg-emerald-50 dark:bg-emerald-950/50 rounded-2xl border border-emerald-100 dark:border-emerald-800">
           <p className="text-emerald-800 dark:text-emerald-200 font-bold italic">
-            "ঈদ মোবারক, {submission.getterName}! আশা করি এটি আপনার মুখে হাসি ফুটাবে।"
+            &quot;ঈদ মোবারক, {submission.getterName}! আশা করি এটি আপনার মুখে হাসি ফুটাবে।&quot;
           </p>
         </div>
 

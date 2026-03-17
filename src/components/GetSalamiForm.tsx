@@ -7,9 +7,16 @@ import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
 import { cn } from "@/lib/utils";
 
-export default function GetSalamiForm({ pool }: { pool: any }) {
+interface SalamiPool {
+  id: string;
+  giverName: string;
+  questions: string;
+  remainingBudget: number;
+}
+
+export default function GetSalamiForm({ pool }: { pool: SalamiPool }) {
   const router = useRouter();
-  const questions = JSON.parse(pool.questions);
+  const questions = JSON.parse(pool.questions) as { text: string; options: string[] }[];
   const [step, setStep] = useState(0); // 0 for name, 1..n for questions
   const [getterName, setGetterName] = useState("");
   const [answers, setAnswers] = useState<string[]>(new Array(questions.length).fill(""));
