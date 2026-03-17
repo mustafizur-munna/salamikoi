@@ -11,10 +11,10 @@ export default function CreatePage() {
           </div>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-emerald-900 dark:text-emerald-50 tracking-tight">
-          সালামি পুল তৈরি করুন
+          সালামি লিংক তৈরি করুন
         </h1>
         <p className="text-emerald-700 dark:text-emerald-300">
-          আপনার বাজেট সেট করুন, কিছু মজার প্রশ্ন যোগ করুন এবং শেয়ার করার জন্য আপনার ইউনিক লিংকটি নিন!
+          প্রিয়জনকে সালামি দিন মজার উপায়ে! প্রশ্ন সেট করুন, লিংক শেয়ার করুন, এবং তাদের সালামি অর্জন করতে দিন।
         </p>
       </div>
 

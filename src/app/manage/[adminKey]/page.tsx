@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
-import { Copy, Gift, Users, CreditCard, Share2 } from "lucide-react";
+import { Copy, Gift, Users, CreditCard, Share2, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import CopyButton from "@/components/CopyButton";
 
@@ -56,6 +56,17 @@ export default async function ManagePage({ params }: { params: Promise<{ adminKe
           </div>
         </div>
 
+        <div className="bg-amber-50 dark:bg-amber-900/40 p-5 sm:p-6 rounded-2xl border border-amber-200 dark:border-amber-700/50 flex gap-4 mt-6">
+          <div className="bg-amber-100 dark:bg-amber-800/50 w-10 h-10 shrink-0 rounded-full flex items-center justify-center">
+            <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+          </div>
+          <div>
+            <p className="text-amber-700 dark:text-amber-400 text-xs sm:text-sm mt-1 leading-relaxed">
+              দয়া করে আপনার <span className="font-bold">বর্তমান ব্রাউজার লিংকের অংশটুকু</span> বুকমার্ক করে রাখুন বা কোথাও সেভ করে রাখুন। এই লিংকটি হারিয়ে গেলে আপনি আর আপনার সালামি প্যানেলে ফিরে আসতে পারবেন না। কে কে সালামি নিলো তা দেখতে মাঝে মাঝে এই পেজটি রিফ্রেশ করুন।
+            </p>
+          </div>
+        </div>
+
         <div className="bg-emerald-600 p-6 sm:p-8 rounded-3xl shadow-xl text-white space-y-4">
           <div className="flex items-center gap-2 text-emerald-100 font-bold uppercase tracking-wider text-xs sm:text-sm">
             <Share2 className="w-4 h-4 shrink-0" /> এই লিংকটি আপনার প্রিয়জনদের সাথে শেয়ার করুন!
@@ -72,7 +83,7 @@ export default async function ManagePage({ params }: { params: Promise<{ adminKe
           <h2 className="text-xl sm:text-2xl font-bold text-emerald-900 dark:text-emerald-50 flex items-center gap-2">
             <Users className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500" /> সাম্প্রতিক সালামি গ্রহীতারা
           </h2>
-          
+
           {pool.submissions.length === 0 ? (
             <div className="bg-white/50 dark:bg-emerald-900/50 p-8 sm:p-12 rounded-3xl border border-dashed border-emerald-200 dark:border-emerald-800 text-center text-emerald-600 dark:text-emerald-400 font-medium text-sm sm:text-base">
               এখনও কেউ সালামি নেয়নি। সালামি দেওয়া শুরু করতে আপনার লিংক শেয়ার করুন!
