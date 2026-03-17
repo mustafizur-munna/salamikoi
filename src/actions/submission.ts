@@ -1,9 +1,7 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
+import { prisma, type PrismaTransactionClient } from "@/lib/prisma";
 import { redirect } from "next/navigation";
-
-import { PrismaClient } from "@prisma/client";
 
 export async function submitAnswers(poolId: string, getterName: string, getterAnswers: string[]) {
   const pool = await prisma.salamiPool.findUnique({
@@ -33,10 +31,8 @@ export async function submitAnswers(poolId: string, getterName: string, getterAn
   // No, let's just stick to the calculation.
   if (calculatedAmount < 0) calculatedAmount = 0;
 
-  // Check budget
   const actualAmount = Math.min(calculatedAmount, pool.remainingBudget);
-
-  const submission = await prisma.$transaction(async (tx: Omit<PrismaClient, "$connect" | "$disconnect" | "$on" | "$transaction" | "$use" | "$extends">) => {
+  const submission = await prisma.$transaction(async (tx: PrismaTransactionClient) => {
     // 1. Create submission
     const sub = await tx.submission.create({
       data: {
