@@ -135,9 +135,9 @@ export default function CreatePoolForm() {
 
   return (
     <form action={createPool} onSubmit={handleSubmit} className="w-full max-w-3xl space-y-8 pb-12">
-      <div className="bg-white dark:bg-emerald-900/50 p-8 rounded-2xl shadow-xl border border-emerald-100 dark:border-emerald-800 space-y-6">
-        <h2 className="text-2xl font-bold text-emerald-900 dark:text-emerald-50 flex items-center gap-2">
-          <Gift className="w-6 h-6 text-emerald-500" /> সাধারণ তথ্য
+      <div className="bg-white dark:bg-emerald-900/50 p-5 sm:p-6 md:p-8 rounded-2xl shadow-xl border border-emerald-100 dark:border-emerald-800 space-y-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-emerald-900 dark:text-emerald-50 flex items-center gap-2">
+          <Gift className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500" /> সাধারণ তথ্য
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -175,11 +175,11 @@ export default function CreatePoolForm() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-emerald-900/50 p-8 rounded-2xl shadow-xl border border-emerald-100 dark:border-emerald-800 space-y-8">
-        <div className="flex justify-between items-center border-b border-emerald-100 dark:border-emerald-800 pb-4">
+      <div className="bg-white dark:bg-emerald-900/50 p-5 sm:p-6 md:p-8 rounded-2xl shadow-xl border border-emerald-100 dark:border-emerald-800 space-y-6 sm:space-y-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-emerald-100 dark:border-emerald-800 pb-4 gap-4 sm:gap-0">
           <div>
-            <h2 className="text-2xl font-bold text-emerald-900 dark:text-emerald-50">প্রশ্নমালা</h2>
-            <p className="text-sm text-emerald-600 dark:text-emerald-400 mt-1">যারা আপনাকে সবচেয়ে ভালো জানে, তারা বেশি সালামি পাবে!</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-emerald-900 dark:text-emerald-50">প্রশ্নমালা</h2>
+            <p className="text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 mt-1">যারা আপনাকে সবচেয়ে ভালো জানে, তারা বেশি সালামি পাবে!</p>
           </div>
           <button 
             type="button"
@@ -192,7 +192,7 @@ export default function CreatePoolForm() {
 
         <div className="space-y-10">
           {questions.map((q, qIndex) => (
-            <div key={qIndex} className="relative p-6 rounded-2xl border border-emerald-200 dark:border-emerald-700 bg-emerald-50/20 dark:bg-emerald-950/20 space-y-6 animate-in fade-in slide-in-from-bottom-2">
+            <div key={qIndex} className="relative p-5 sm:p-6 rounded-2xl border border-emerald-200 dark:border-emerald-700 bg-emerald-50/20 dark:bg-emerald-950/20 space-y-6 animate-in fade-in slide-in-from-bottom-2">
               {questions.length > 1 && (
                 <button 
                   type="button"
@@ -226,7 +226,7 @@ export default function CreatePoolForm() {
                   placeholder="আপনার প্রশ্নটি লিখুন"
                   value={q.text}
                   onChange={(e) => updateQuestionText(qIndex, e.target.value)}
-                  className="w-full p-3 bg-white dark:bg-emerald-900/50 border border-emerald-200 dark:border-emerald-700 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition-all font-bold text-lg"
+                  className="w-full p-2.5 sm:p-3 bg-white dark:bg-emerald-900/50 border border-emerald-200 dark:border-emerald-700 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition-all font-bold text-base sm:text-lg"
                 />
               </div>
 
@@ -292,7 +292,7 @@ export default function CreatePoolForm() {
       <button 
         disabled={isSubmitting}
         type="submit"
-        className="w-full py-5 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xl rounded-2xl shadow-xl shadow-emerald-200 dark:shadow-emerald-900/20 transition-all hover:-translate-y-1 flex items-center justify-center gap-3 disabled:opacity-50 disabled:hover:translate-y-0"
+        className="w-full py-4 sm:py-5 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-lg sm:text-xl rounded-2xl shadow-xl shadow-emerald-200 dark:shadow-emerald-900/20 transition-all hover:-translate-y-1 flex items-center justify-center gap-2 sm:gap-3 disabled:opacity-50 disabled:hover:translate-y-0"
       >
         {isSubmitting ? (
           <span className="flex items-center gap-2">

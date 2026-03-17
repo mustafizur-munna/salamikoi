@@ -38,7 +38,7 @@ export default function ResultCard({ submission }: { submission: Submission }) {
     <div className="w-full max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
       <div 
         ref={cardRef}
-        className="bg-white dark:bg-emerald-900 p-10 rounded-[2.5rem] shadow-2xl border border-emerald-100 dark:border-emerald-800 text-center space-y-8 relative overflow-hidden"
+        className="bg-white dark:bg-emerald-900 p-6 sm:p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-emerald-100 dark:border-emerald-800 text-center space-y-6 md:space-y-8 relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full h-2 bg-emerald-500" />
         <div className="absolute bottom-0 left-0 w-full h-2 bg-emerald-500" />
@@ -50,23 +50,23 @@ export default function ResultCard({ submission }: { submission: Submission }) {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-3xl font-black text-emerald-900 dark:text-emerald-50 uppercase tracking-tighter">
+          <h2 className="text-2xl sm:text-3xl font-black text-emerald-900 dark:text-emerald-50 uppercase tracking-tighter">
             ঈদ সালামির ফলাফল
           </h2>
-          <p className="text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-widest text-sm">
+          <p className="text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-widest text-[10px] sm:text-sm">
             মোবারক! আপনি {submission.pool.giverName}-এর কাছ থেকে সালামি পেয়েছেন
           </p>
         </div>
 
-        <div className="py-8 space-y-2">
-          <div className="text-emerald-600 dark:text-emerald-400 font-black text-xl uppercase">৳ টাকা</div>
-          <div className="text-8xl font-black text-emerald-500 tracking-tighter tabular-nums drop-shadow-sm">
+        <div className="py-6 sm:py-8 space-y-2">
+          <div className="text-emerald-600 dark:text-emerald-400 font-black text-lg sm:text-xl uppercase">৳ টাকা</div>
+          <div className="text-6xl sm:text-7xl md:text-8xl font-black text-emerald-500 tracking-tighter tabular-nums drop-shadow-sm">
             {submission.amount.toLocaleString('bn-BD')}
           </div>
         </div>
 
-        <div className="p-4 bg-emerald-50 dark:bg-emerald-950/50 rounded-2xl border border-emerald-100 dark:border-emerald-800">
-          <p className="text-emerald-800 dark:text-emerald-200 font-bold italic">
+        <div className="p-3 sm:p-4 bg-emerald-50 dark:bg-emerald-950/50 rounded-2xl border border-emerald-100 dark:border-emerald-800">
+          <p className="text-emerald-800 dark:text-emerald-200 font-bold italic text-sm sm:text-base">
             &quot;ঈদ মোবারক, {submission.getterName}! আশা করি এটি আপনার মুখে হাসি ফুটাবে।&quot;
           </p>
         </div>

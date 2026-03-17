@@ -69,14 +69,14 @@ export default function GetSalamiForm({ pool }: { pool: SalamiPool }) {
   if (step === 0) {
     return (
       <form onSubmit={handleStart} className="w-full max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <div className="bg-white dark:bg-emerald-900 p-8 rounded-3xl shadow-xl border border-emerald-100 dark:border-emerald-800 text-center space-y-6">
+        <div className="bg-white dark:bg-emerald-900 p-6 sm:p-8 rounded-3xl shadow-xl border border-emerald-100 dark:border-emerald-800 text-center space-y-6">
           <div className="flex justify-center">
             <div className="bg-emerald-100 dark:bg-emerald-800 p-4 rounded-full">
               <Heart className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
             </div>
           </div>
-          <h2 className="text-2xl font-bold text-emerald-900 dark:text-emerald-50">আপনার পরিচয়?</h2>
-          <p className="text-emerald-600 dark:text-emerald-400">
+          <h2 className="text-xl sm:text-2xl font-bold text-emerald-900 dark:text-emerald-50">আপনার পরিচয়?</h2>
+          <p className="text-sm sm:text-base text-emerald-600 dark:text-emerald-400">
             সালামি চ্যালেঞ্জ শুরু করতে {pool.giverName}-কে আপনার নাম বলুন!
           </p>
           <input 
@@ -106,7 +106,7 @@ export default function GetSalamiForm({ pool }: { pool: SalamiPool }) {
 
   return (
     <div className="w-full max-w-xl space-y-8 animate-in fade-in slide-in-from-right-4 duration-500">
-      <div className="bg-white dark:bg-emerald-900 p-8 rounded-3xl shadow-xl border border-emerald-100 dark:border-emerald-800 space-y-8 relative overflow-hidden">
+      <div className="bg-white dark:bg-emerald-900 p-5 sm:p-8 rounded-3xl shadow-xl border border-emerald-100 dark:border-emerald-800 space-y-6 sm:space-y-8 relative overflow-hidden">
         {/* Progress bar at the very top */}
         <div className="absolute top-0 left-0 w-full h-1.5 bg-emerald-50 dark:bg-emerald-950">
           <div 
@@ -128,8 +128,8 @@ export default function GetSalamiForm({ pool }: { pool: SalamiPool }) {
           <div className="w-9" /> {/* Spacer */}
         </div>
 
-        <div className="space-y-8 text-center">
-          <h2 className="text-2xl font-black text-emerald-900 dark:text-emerald-50 leading-tight">
+        <div className="space-y-6 sm:space-y-8 text-center">
+          <h2 className="text-xl sm:text-2xl font-black text-emerald-900 dark:text-emerald-50 leading-tight">
             {currentQuestion.text}
           </h2>
           
@@ -139,7 +139,7 @@ export default function GetSalamiForm({ pool }: { pool: SalamiPool }) {
                 key={idx}
                 onClick={() => selectAnswer(option)}
                 className={cn(
-                  "w-full p-4 rounded-2xl text-left font-bold transition-all border-2 flex items-center justify-between group",
+                  "w-full p-3 sm:p-4 rounded-2xl text-left font-bold transition-all border-2 flex items-center justify-between group",
                   answers[step - 1] === option 
                     ? "bg-emerald-500 border-emerald-500 text-white shadow-lg shadow-emerald-200 dark:shadow-emerald-900/40 translate-x-1" 
                     : "bg-white dark:bg-emerald-950/50 border-emerald-100 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-900/50"
