@@ -1,7 +1,6 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
 
 export async function submitAnswers(poolId: string, getterName: string, getterAnswers: string[]) {
@@ -35,7 +34,7 @@ export async function submitAnswers(poolId: string, getterName: string, getterAn
   // Check budget
   const actualAmount = Math.min(calculatedAmount, pool.remainingBudget);
 
-  const submission = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
+  const submission = await prisma.$transaction(async (tx) => {
     // 1. Create submission
     const sub = await tx.submission.create({
       data: {
