@@ -4,7 +4,14 @@ import { Copy, Gift, Users, CreditCard, Share2 } from "lucide-react";
 import Link from "next/link";
 import CopyButton from "@/components/CopyButton";
 
-import type { Submission } from "@prisma/client";
+// Manually define the strict shape instead of importing from Prisma 
+// to avoid Vercel build failures when it strips @prisma/client exports
+type SubmissionResult = {
+  id: string;
+  getterName: string;
+  amount: number;
+  createdAt: Date;
+};
 
 export default async function ManagePage({ params }: { params: Promise<{ adminKey: string }> }) {
   const { adminKey } = await params;
@@ -72,7 +79,7 @@ export default async function ManagePage({ params }: { params: Promise<{ adminKe
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {pool.submissions.map((sub: Submission) => (
+              {pool.submissions.map((sub: SubmissionResult) => (
                 <div key={sub.id} className="bg-white dark:bg-emerald-900 p-6 rounded-2xl shadow-lg border border-emerald-100 dark:border-emerald-800 flex justify-between items-center">
                   <div>
                     <h3 className="font-bold text-emerald-900 dark:text-emerald-50">{sub.getterName}</h3>
