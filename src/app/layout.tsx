@@ -26,9 +26,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-emerald-500 selection:text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-emerald-500 selection:text-white flex flex-col min-h-screen`}
       >
-        {children}
+        <div className="flex-grow flex flex-col">
+          {children}
+        </div>
+
+        <footer className="w-full py-6 text-center text-sm text-emerald-700/80 dark:text-emerald-300/80 border-t border-emerald-100 dark:border-emerald-800/50 bg-white/50 dark:bg-emerald-950/50 backdrop-blur-sm mt-auto">
+          <p>
+            Created with ❤️ by{" "}
+            <a
+              href="https://facebook.com/munna.mtc.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors underline underline-offset-4"
+            >
+              Mustafiz Munna
+            </a>
+          </p>
+        </footer>
+
         <Toaster position="bottom-center" />
       </body>
     </html>
