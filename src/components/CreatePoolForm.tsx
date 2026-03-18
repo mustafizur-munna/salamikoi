@@ -9,6 +9,7 @@ interface Question {
   text: string;
   options: string[];
   answer: string;
+  presetIndex?: number;
 }
 
 const PRESET_QUESTIONS: Question[] = [
@@ -66,12 +67,19 @@ const PRESET_QUESTIONS: Question[] = [
 
 export default function CreatePoolForm() {
   const [questions, setQuestions] = useState<Question[]>([
-    { ...PRESET_QUESTIONS[0] },
+    { ...PRESET_QUESTIONS[0], presetIndex: 0 },
   ]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const addQuestion = () => {
-    setQuestions([...questions, { text: "", options: ["", "", "", ""], answer: "" }]);
+    const usedPresetIndexes = new Set(questions.map(q => q.presetIndex).filter(idx => idx !== undefined));
+    const nextPresetIndex = PRESET_QUESTIONS.findIndex((_, index) => !usedPresetIndexes.has(index));
+    
+    if (nextPresetIndex !== -1) {
+      setQuestions([...questions, { ...PRESET_QUESTIONS[nextPresetIndex], presetIndex: nextPresetIndex }]);
+    } else {
+      setQuestions([...questions, { text: "", options: ["", "", "", ""], answer: "" }]);
+    }
   };
 
   const removeQuestion = (index: number) => {
@@ -102,7 +110,7 @@ export default function CreatePoolForm() {
 
   const applyPreset = (qIndex: number, presetIndex: number) => {
     const newQuestions = [...questions];
-    newQuestions[qIndex] = { ...PRESET_QUESTIONS[presetIndex] };
+    newQuestions[qIndex] = { ...PRESET_QUESTIONS[presetIndex], presetIndex };
     setQuestions(newQuestions);
   };
 
@@ -273,9 +281,9 @@ export default function CreatePoolForm() {
                         <button 
                           type="button"
                           onClick={() => removeOptionField(qIndex, oIndex)}
-                          className="p-2 text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-full transition-all shrink-0 bg-red-50/50 dark:bg-red-900/10"
                         >
-                          <Trash2 className="w-3.5 h-3.5" />
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       )}
                     </div>
@@ -284,6 +292,16 @@ export default function CreatePoolForm() {
               </div>
             </div>
           ))}
+        </div>
+        
+        <div className="pt-4 border-t border-rose-100 dark:border-rose-800 flex justify-center mt-6">
+          <button 
+            type="button"
+            onClick={addQuestion}
+            className="flex w-full sm:w-auto justify-center items-center gap-2 bg-rose-100 dark:bg-rose-900 border border-rose-200 dark:border-rose-700 text-rose-700 dark:text-rose-300 px-6 py-3 rounded-xl text-base font-bold hover:bg-rose-500 hover:text-white transition-all shadow-sm"
+          >
+            <Plus className="w-5 h-5" /> আরও একটি প্রশ্ন যোগ করুন
+          </button>
         </div>
       </div>
 

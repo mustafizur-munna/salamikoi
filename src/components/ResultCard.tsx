@@ -36,13 +36,13 @@ export default function ResultCard({ submission }: { submission: Submission }) {
 
   return (
     <div className="w-full max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-      <div 
+      <div
         ref={cardRef}
         className="bg-white dark:bg-emerald-900 p-6 sm:p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-emerald-100 dark:border-emerald-800 text-center space-y-6 md:space-y-8 relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full h-2 bg-emerald-500" />
         <div className="absolute bottom-0 left-0 w-full h-2 bg-emerald-500" />
-        
+
         <div className="flex justify-center mb-4">
           <div className="bg-emerald-500 p-5 rounded-full shadow-lg shadow-emerald-200 dark:shadow-emerald-900/20">
             <Gift className="w-12 h-12 text-white" />
@@ -77,18 +77,18 @@ export default function ResultCard({ submission }: { submission: Submission }) {
       </div>
 
       <div className="flex flex-col gap-3">
-        <button 
+        <button
           onClick={downloadScreenshot}
           className="w-full py-5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl shadow-lg transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
         >
           <Download className="w-5 h-5" /> স্ক্রিনশট নিন
         </button>
-        
-        <Link 
+
+        <Link
           href="/"
           className="w-full py-5 bg-white/50 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 font-bold rounded-2xl shadow-xl border border-emerald-100 dark:border-emerald-800 text-center transition-all hover:-translate-y-0.5"
         >
-          হোম পেজে ফিরে যান
+          আমিও সালামি দিতে চাই
         </Link>
       </div>
     </div>
