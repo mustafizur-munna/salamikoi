@@ -74,7 +74,7 @@ export default function CreatePoolForm() {
   const addQuestion = () => {
     const usedPresetIndexes = new Set(questions.map(q => q.presetIndex).filter(idx => idx !== undefined));
     const nextPresetIndex = PRESET_QUESTIONS.findIndex((_, index) => !usedPresetIndexes.has(index));
-    
+
     if (nextPresetIndex !== -1) {
       setQuestions([...questions, { ...PRESET_QUESTIONS[nextPresetIndex], presetIndex: nextPresetIndex }]);
     } else {
@@ -97,7 +97,7 @@ export default function CreatePoolForm() {
     newQuestions[qIndex].options[oIndex] = value;
     // If the updated option was the correct answer, update the answer string too
     if (newQuestions[qIndex].answer === questions[qIndex].options[oIndex]) {
-        newQuestions[qIndex].answer = value;
+      newQuestions[qIndex].answer = value;
     }
     setQuestions(newQuestions);
   };
@@ -147,21 +147,21 @@ export default function CreatePoolForm() {
         <h2 className="text-xl sm:text-2xl font-bold text-emerald-900 dark:text-emerald-50 flex items-center gap-2">
           <Gift className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500" /> সাধারণ তথ্য
         </h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <label className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">আপনার নাম</label>
-            <input 
+            <input
               required
               name="giverName"
               placeholder="যেমন: Mustafizur Rahman"
               className="w-full p-3 rounded-xl border border-emerald-200 dark:border-emerald-700 bg-emerald-50/30 dark:bg-emerald-950/30 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
             />
           </div>
-          
+
           <div className="space-y-2">
             <label className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">মোট বাজেট (টাকা)</label>
-            <input 
+            <input
               required
               type="number"
               name="totalBudget"
@@ -172,7 +172,7 @@ export default function CreatePoolForm() {
 
           <div className="space-y-2">
             <label className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">প্রত্যেককে সর্বোচ্চ কত সালামি দিবেন?</label>
-            <input 
+            <input
               required
               type="number"
               name="maxPerPerson"
@@ -189,7 +189,7 @@ export default function CreatePoolForm() {
             <h2 className="text-xl sm:text-2xl font-bold text-emerald-900 dark:text-emerald-50">প্রশ্নমালা</h2>
             <p className="text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 mt-1">যারা আপনাকে সবচেয়ে ভালো জানে, তারা বেশি সালামি পাবে!</p>
           </div>
-          <button 
+          <button
             type="button"
             onClick={addQuestion}
             className="flex items-center gap-1 bg-emerald-100 dark:bg-emerald-800 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-xl text-sm font-bold hover:bg-emerald-500 hover:text-white transition-all shadow-sm"
@@ -202,7 +202,7 @@ export default function CreatePoolForm() {
           {questions.map((q, qIndex) => (
             <div key={qIndex} className="relative p-5 sm:p-6 rounded-2xl border border-emerald-200 dark:border-emerald-700 bg-emerald-50/20 dark:bg-emerald-950/20 space-y-6 animate-in fade-in slide-in-from-bottom-2">
               {questions.length > 1 && (
-                <button 
+                <button
                   type="button"
                   onClick={() => removeQuestion(qIndex)}
                   className="absolute -top-3 -right-3 p-2 bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 rounded-full shadow-md hover:bg-red-500 hover:text-white transition-all z-10"
@@ -210,14 +210,14 @@ export default function CreatePoolForm() {
                   <Trash2 className="w-4 h-4" />
                 </button>
               )}
-              
+
               <div className="space-y-4">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <span className="text-xs font-black uppercase tracking-widest text-emerald-500 bg-emerald-100 dark:bg-emerald-800 px-3 py-1 rounded-full w-fit">
                     প্রশ্ন {qIndex + 1}
                   </span>
                   <div className="flex flex-wrap gap-2">
-                    <select 
+                    <select
                       onChange={(e) => applyPreset(qIndex, parseInt(e.target.value))}
                       className="text-xs bg-white dark:bg-emerald-800 border border-emerald-200 dark:border-emerald-700 rounded-lg px-3 py-1.5 outline-none focus:ring-1 focus:ring-emerald-500"
                     >
@@ -229,7 +229,7 @@ export default function CreatePoolForm() {
                   </div>
                 </div>
 
-                <input 
+                <input
                   required
                   placeholder="আপনার প্রশ্নটি লিখুন"
                   value={q.text}
@@ -241,7 +241,7 @@ export default function CreatePoolForm() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <h3 className="text-sm font-bold text-emerald-700 dark:text-emerald-300">অপশনগুলো সেট করুন এবং সঠিক উত্তরটি সিলেক্ট করুন:</h3>
-                  <button 
+                  <button
                     type="button"
                     onClick={() => addOptionField(qIndex)}
                     className="text-xs font-bold text-emerald-600 hover:text-emerald-500 flex items-center gap-1"
@@ -252,33 +252,33 @@ export default function CreatePoolForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {q.options.map((opt, oIndex) => (
                     <div key={oIndex} className="flex items-center gap-2 group">
-                      <button 
+                      <button
                         type="button"
                         onClick={() => setCorrectAnswer(qIndex, opt)}
                         disabled={!opt}
                         className={cn(
                           "shrink-0 p-1.5 rounded-full transition-all",
-                          q.answer === opt && opt !== "" 
-                            ? "bg-emerald-500 text-white" 
+                          q.answer === opt && opt !== ""
+                            ? "bg-emerald-500 text-white"
                             : "bg-emerald-100 dark:bg-emerald-800 text-emerald-300 hover:text-emerald-500"
                         )}
                       >
                         {q.answer === opt && opt !== "" ? <CheckCircle2 className="w-4 h-4" /> : <Circle className="w-4 h-4" />}
                       </button>
-                      <input 
+                      <input
                         required
                         placeholder={`অপশন ${oIndex + 1}`}
                         value={opt}
                         onChange={(e) => updateOption(qIndex, oIndex, e.target.value)}
                         className={cn(
                           "flex-1 p-2.5 text-sm bg-white dark:bg-emerald-900/50 border rounded-xl outline-none transition-all",
-                          q.answer === opt && opt !== "" 
-                            ? "border-emerald-500 ring-1 ring-emerald-500" 
+                          q.answer === opt && opt !== ""
+                            ? "border-emerald-500 ring-1 ring-emerald-500"
                             : "border-emerald-200 dark:border-emerald-700"
                         )}
                       />
                       {q.options.length > 2 && (
-                        <button 
+                        <button
                           type="button"
                           onClick={() => removeOptionField(qIndex, oIndex)}
                           className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-full transition-all shrink-0 bg-red-50/50 dark:bg-red-900/10"
@@ -293,12 +293,12 @@ export default function CreatePoolForm() {
             </div>
           ))}
         </div>
-        
-        <div className="pt-4 border-t border-rose-100 dark:border-rose-800 flex justify-center mt-6">
-          <button 
+
+        <div className="pt-4 flex justify-center mt-6">
+          <button
             type="button"
             onClick={addQuestion}
-            className="flex w-full sm:w-auto justify-center items-center gap-2 bg-rose-100 dark:bg-rose-900 border border-rose-200 dark:border-rose-700 text-rose-700 dark:text-rose-300 px-6 py-3 rounded-xl text-base font-bold hover:bg-rose-500 hover:text-white transition-all shadow-sm"
+            className="flex w-full sm:w-auto justify-center items-center gap-2 bg-emerald-100 dark:bg-emerald-800 text-emerald-700 dark:text-emerald-300 px-6 py-3 rounded-xl text-base font-bold hover:bg-emerald-500 hover:text-white transition-all shadow-sm"
           >
             <Plus className="w-5 h-5" /> আরও একটি প্রশ্ন যোগ করুন
           </button>
@@ -307,7 +307,7 @@ export default function CreatePoolForm() {
 
       <input type="hidden" name="questions" value={JSON.stringify(questions)} />
 
-      <button 
+      <button
         disabled={isSubmitting}
         type="submit"
         className="w-full py-4 sm:py-5 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-lg sm:text-xl rounded-2xl shadow-xl shadow-emerald-200 dark:shadow-emerald-900/20 transition-all hover:-translate-y-1 flex items-center justify-center gap-2 sm:gap-3 disabled:opacity-50 disabled:hover:translate-y-0"
