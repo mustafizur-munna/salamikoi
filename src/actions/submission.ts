@@ -24,8 +24,8 @@ export async function submitAnswers(poolId: string, getterName: string, getterAn
   const totalQuestions = questions.length;
   let calculatedAmount = (correctCount / totalQuestions) * pool.maxPerPerson;
   
-  // Round to nearest 10 for "realistic" taka amounts
-  calculatedAmount = Math.round(calculatedAmount / 10) * 10;
+  // Round to nearest integer to avoid decimals, but do not round to 10s or 20s
+  calculatedAmount = Math.round(calculatedAmount);
   
   // Min amount of 10 if they got at least one right? 
   // No, let's just stick to the calculation.

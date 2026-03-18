@@ -71,8 +71,8 @@ export default function ResultCard({ submission }: { submission: Submission }) {
           </p>
         </div>
 
-        <div className="pt-4 text-xs font-bold text-emerald-400 uppercase tracking-widest">
-          ঈদ সালামি অ্যাপ • ২০২৬
+        <div className="pt-4 pb-2 text-xs font-bold text-emerald-400 uppercase tracking-widest">
+          ঈদ সালামি • ২০২৬
         </div>
       </div>
 
