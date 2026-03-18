@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eid Salami App - Share Joy This Eid!",
-  description: "A fun way to give and receive Eid Salami with family and friends.",
+  title: "ঈদ সালামি চ্যালেঞ্জ - কে কার চেয়ে বেশি চেনে!",
+  description: "বন্ধু বা পরিবারের কে আপনাকে সবচেয়ে ভালো চেনে? কিছু মজার প্রশ্ন সেট করুন, লিংক শেয়ার করুন, আর উত্তরের ভিত্তিতে ওদের সালামি দিন!",
 };
 
 export default function RootLayout({
